@@ -23,7 +23,7 @@ class Pong:
         self.player2 = player()
         self.player1.paddle = Paddle(1140, 400, 40, 100, (255, 255, 255), 5, 1)
         self.player2.paddle = Paddle(20, 400, 40, 100, (255, 255, 255), 5, 2)
-        self.timer = Timer(self.screen, 30, pygame.time.get_ticks())
+        self.timer = Timer(self.screen, 150, pygame.time.get_ticks())
         self.game_over = False
 
     def run(self):
@@ -68,10 +68,16 @@ class Pong:
 
             if self.timer.time_left <= self.timer.game_time // 2:
                 self.ball.speed = 7
+                self.player1.paddle.speed = 7
+                self.player2.paddle.speed = 7
             elif self.timer.time_left <= self.timer.game_time // 4:
                 self.ball.speed = 8
+                self.player1.paddle.speed = 8
+                self.player2.paddle.speed = 8
             elif self.timer.time_left <= self.timer.game_time * 0.75:
                 self.ball.speed = 6
+                self.player1.paddle.speed = 6
+                self.player2.paddle.speed = 6
 
             if self.timer.time_left <= 10:
                 pygame.draw.rect(self.screen, (255, 0, 0), (self.screen.get_width() // 2 - (325/2), 40, 325, 110))
